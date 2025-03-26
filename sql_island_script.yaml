@@ -1,0 +1,1845 @@
+schemaVersion: 3
+meta:
+  sourceVersionId: 0195d4b1-b67d-7008-b224-906b96959715 # DO NOT CHANGE - Hex uses this to match up project versions when reimporting the file
+  description: |-
+    "SQL Island Adventure" is an interactive game-style learning experience where players engage in SQL-based challenges while exploring a fictional island. The game simulates a conversation with NPCs (non-playable characters) who guide the player through various SQL queries, teaching fundamental SQL concepts in an engaging, story-driven format.
+
+
+
+    This project contains:
+
+
+
+    A structured conversation between the player and NPCs.
+
+
+
+    SQL queries that players must execute to progress.
+
+
+
+    A gamified learning experience with progressive difficulty.
+
+
+
+    The script is written in Hex (SQL Notebook format), making it interactive and executable directly within the platform.
+  projectId: 0195d49a-4444-7008-bf41-9ced6d47fc33 # DO NOT CHANGE - Unique ID of the project from which this file was generated
+  title: SQL Island  - An Interactive SQL Learning Game
+  timezone: null
+  appTheme: SYS_PREF
+  codeLanguage: PYTHON
+  status: null
+  categories: []
+  castDecimalsDefault: true
+  logicQueryCacheTimeout: null
+  publishedQueryCacheTimeout: null
+  hexType: PROJECT
+  allowExecutionReordering: true
+  prerunApp: false
+  cachePublishedAppState: true
+  refreshStalePublishedApp: false
+  autoRerunApp: true
+projectAssets:
+  dataConnections: []
+  envVars: []
+  secrets: []
+sharedAssets:
+  secrets: []
+  vcsPackages: []
+  dataConnections:
+    - dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347 # [Demo] Hex Public Data (snowflake)
+  externalFileIntegrations: []
+cells:
+  - cellType: TEXT
+    cellId: 0195d49b-8913-7442-9763-83099ae53a4f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - bold: true
+              text: "Narrator:"
+        - type: paragraph
+          children:
+            - bold: true
+              text: This is you!
+        - type: paragraph
+          children:
+            - bold: true
+              text: After the survived plane crash, you will be stuck on SQL Island for the time being. By making progress in the game, you will find a way to escape from this island.
+        - type: paragraph
+          children:
+            - text: ""
+            - url: https://sql-island.informatik.uni-kl.de/
+              type: a
+              target: _blank
+              children:
+                - bold: true
+                  text: "\n"
+            - bold: true
+              text: This field is where you write your commands. The complete game will be controlled by means of the database language SQL.
+        - type: paragraph
+          children:
+            - bold: true
+              text: You don't know anything about SQL commands yet? No problem. You will find out all about them here!
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Down here you find all tables which you can access: village, inhabitant and item. Each of these tables include several columns (in brackets). You will require this information throughout the entire game!"
+        - type: h4
+          children:
+            - bold: true
+              text: "Tables are :"
+        - type: paragraph
+          indent: 2
+          children:
+            - text: "1. "
+            - bold: true
+              text: VILLAGE (villageid, name, chief)
+        - type: paragraph
+          indent: 2
+          children:
+            - text: "2. "
+            - bold: true
+              text: INHABITANT (personid, name, villageid, gender, job, gold, state)
+        - type: paragraph
+          indent: 2
+          children:
+            - text: "3. "
+            - bold: true
+              text: ITEM (item, owner)
+        - type: paragraph
+          children:
+            - bold: true
+              text: In case you want to restart the game or replay the game instructions, just click on this menu button.
+  - cellType: TEXT
+    cellId: 0195d49c-27a0-7442-9765-aa5b504d3d15 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Me: In case you want to restart the game or replay the game instructions, just click on this menu button."
+        - type: paragraph
+          children:
+            - bold: true
+              text: Oh dear, what happened? It seems that I am the only survivor of the air crash. Wow, there are some villages on this island.
+  - cellType: SQL
+    cellId: 0195d49c-736d-7442-9767-90a52f826e16 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM village
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d49c-a45d-7442-9768-af057821a09a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: It seems there are a few people living in these villages. How can I see a list of all inhabitants?
+  - cellType: SQL
+    cellId: 0195d49c-d521-7442-9769-996fe4e802a3 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT *
+        FROM INHABITANT
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_2
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d49d-2cc4-7442-976a-5d5ae583a58c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Woah, so many people!
+        - type: paragraph
+          children:
+            - bold: true
+              text: Man! I'm hungry. I will go and find a butcher to ask for some free sausages.
+  - cellType: SQL
+    cellId: 0195d49d-4762-7442-976b-4a16c021dcf7 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM inhabitant 
+        WHERE job = 'butcher'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_3
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d49d-b8a4-7442-976c-4245fc775c38 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: p
+          children:
+            - bold: true
+              text: "Paul: "
+        - type: paragraph
+          children:
+            - bold: true
+              text: There you are! Enjoy your meal! But take care of yourself. As long as you are unarmed, stay away from villains. Not everyone on this island is friendly.
+  - cellType: TEXT
+    cellId: 0195d49e-79a5-7442-976e-a65053c79299 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: h3
+          children:
+            - text: "Me:"
+        - type: paragraph
+          children:
+            - bold: true
+              text: Thank you, Edward! Okay, let's see who is friendly on this island...
+  - cellType: SQL
+    cellId: 0195d49e-9e37-7442-9770-614c8509912b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM INHABITANT 
+        WHERE state = 'friendly'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_4
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d49e-ec27-7442-9771-974e6ae65e8b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "There is no way around getting a sword for myself. I will now try to find a friendly weaponsmith to forge me one. (Hint: You can combine predicates in the WHERE clause with AND)"
+  - cellType: SQL
+    cellId: 0195d49e-dd4f-7442-9771-3541c8b0a827 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM INHABITANT 
+        WHERE state = 'friendly' AND job = 'weaponsmith'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_5
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d49f-2745-7442-9772-e0e908ee947d # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Oh, that does not look good. Maybe other friendly smiths can help you out, e.g. a blacksmith. Try out: job LIKE '%smith' to find all inhabitants whose job ends with 'smith' (% is a wildcard for any number of characters)."
+  - cellType: SQL
+    cellId: 0195d49f-4189-7442-9773-dd5498de64f0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM INHABITANT 
+        WHERE state = 'friendly' AND job LIKE '%smith'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_6
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d49f-7547-7442-9774-87bd8b1275d4 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: That looks better! I will go and visit those smiths.
+        - type: paragraph
+          children:
+            - bold: true
+              text: Paul the Major of Monkeycity enter
+        - type: p
+          children:
+            - bold: true
+              text: "Paul:"
+        - type: paragraph
+          children:
+            - text: " "
+            - bold: true
+              text: Hi stranger! Where are you going? I'm Paul, I'm the major of Monkeycity. I will go ahead and register you as a citizen.
+  - cellType: SQL
+    cellId: 0195d4a0-3809-7442-9776-2c908fabdca5 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        INSERT INTO 
+            inhabitant (name, villageid, gender, job, gold, state) 
+        VALUES
+            ('Stranger', 1, '?', '?', 0, '?')
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_7
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a0-abb2-7442-9777-56eb641d7ed5 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: p
+          children:
+            - text: "Me:"
+        - type: paragraph
+          children:
+            - bold: true
+              text: "No need to call me stranger! What's my personid? (Hint: Use a SELECT query without an asterisk. In former queries, the * stands for: all columns. Instead of the star, you can also address one or more columns (seperated by a comma) and you will only get the columns you need.)"
+  - cellType: SQL
+    cellId: 0195d4a0-daf4-7442-9779-49d595cc801c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT personid 
+        FROM INHABITANT 
+        WHERE name = 'Stranger'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_8
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a1-2060-7442-9779-de051888d5be # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: I went to a friendly weaponsmith, Ernest
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Me:"
+            - text: " "
+            - bold: true
+              text: Hi Ernest! How much is a sword?
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Ernest: I can offer to make you a sword for 150 gold. That's the cheapest you will find! How much gold do you have?"
+  - cellType: SQL
+    cellId: 0195d4a1-2e22-7442-977b-071eafc3cc6c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT gold 
+        FROM INHABITANT 
+        WHERE personid = 20
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_9
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a1-6d50-7442-977b-afd9e1f96516 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - text: "Me: "
+            - bold: true
+              text: "Damn! No mon, no fun. There has to be another option to earn gold other than going to work. Maybe I could collect ownerless items and sell them! Can I make a list of all items that don't belong to anyone? (Hint: You can recognize ownerless items by: WHERE owner IS NULL)"
+  - cellType: SQL
+    cellId: 0195d4a1-7ec4-7442-977c-b056c5778ff6 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM ITEM
+        WHERE owner IS NULL
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_10
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a1-a1b0-7442-977d-6a62463b7b88 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: So much cool stuff!
+        - type: paragraph
+          children:
+            - bold: true
+              text: Yay, a coffee cup. Let's collect it!
+  - cellType: SQL
+    cellId: 0195d4a1-c16a-7442-977e-74d1edd9c3dc # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE item 
+        SET owner = 20 
+        WHERE item = 'coffee cup'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_11
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a2-10dc-7442-977f-4173b61db577 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Do you know a trick how to collect all the ownerless items?
+  - cellType: SQL
+    cellId: 0195d4a2-4650-7442-9780-4990245134b2 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE ITEM
+        SET owner = 20
+        WHERE owner IS NULL
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_12
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a2-b0ad-7442-9781-0d7ce6683e96 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Now list all of the items I have!
+  - cellType: SQL
+    cellId: 0195d4a2-bbb8-7442-9781-fe0f52a16487 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT * 
+        FROM ITEM 
+        WHERE owner = '20'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_13
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a2-e79b-7442-9782-a9c3cd7cd624 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Find a friendly inhabitant who is either a dealer or a merchant. Maybe they want to buy some of my items. (Hint: When you use both AND and OR, don't forget to put brackets correctly!)"
+  - cellType: SQL
+    cellId: 0195d4a3-05e6-7442-9783-a275ebc7ca18 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |
+        SELECT *
+        FROM INHABITANT
+        WHERE 
+            state = 'friendly'
+            AND
+            (job = 'dealer' or job = 'merchant');
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_14
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a3-4397-7442-9784-493573290525 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: He met Helen Grasshead.
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Helen:"
+            - text: " "
+            - bold: true
+              text: I'd like to get the ring and the teapot. The rest is nothing but scrap. Please give me the two items. My personid is 15.
+  - cellType: SQL
+    cellId: 0195d4a3-d7c9-7442-9786-f220dc6f611b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE ITEM 
+        SET owner = 15 
+        WHERE item = 'ring' or item = 'teapot'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_15
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a4-1d1c-7442-9787-945b0d091ff0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Helen : Thank you! Here, some gold!"
+  - cellType: SQL
+    cellId: 0195d4a4-5d85-7442-9789-3bc2e8e6b305 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE inhabitant 
+        SET gold = gold + 120 
+        WHERE personid = 20
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_16
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a4-a525-7442-9789-f4abc576706a # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Me:"
+            - text: " "
+            - bold: true
+              text: Unfortunately, that's not enough gold to buy a sword. Seems like I do have to work after all. Maybe it's not a bad idea to change my name from Stranger to my real name before I will apply for a job.
+  - cellType: SQL
+    cellId: 0195d4a4-c852-7442-978b-240a1fe45859 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE INHABITANT
+        SET name = 'Krish'
+        WHERE personid = 20
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_17
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a4-ef23-7442-978b-b3b6c5825a60 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Since baking is one of my hobbies, why not find a baker who I can work for? (Hint: List all bakers and use 'ORDER BY gold' to sort the results. 'ORDER BY gold DESC' is even better because then the richest baker is on top.)"
+  - cellType: SQL
+    cellId: 0195d4a5-0c52-7442-978c-92e22ec3436f # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT *
+        FROM INHABITANT
+        WHERE job = 'baker' 
+        ORDER BY gold DESC
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_18
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a6-7331-7442-978d-93a810a9af52 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Helen: Aha, Paul! I know him!"
+        - type: paragraph
+          children:
+            - bold: true
+              text: "              I went to meet Paul"
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Paul: Hi, you again! So, Krish is your name. I saw you want to work as a baker? Okay! You will be paid 1 gold for 100 bread rolls."
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Me: (8 hours later...) Here, I made ten thousand bread rolls! I quit! This should be enough money to buy a sword. Let's see what happens with my gold balance."
+  - cellType: SQL
+    cellId: 0195d4a6-eb86-7442-978e-a09e3de8048e # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE inhabitant 
+        SET gold = gold + 100 - 150 
+        WHERE personid = 20
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_19
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a7-3ee0-7442-978f-55c1ee1bf872 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Paul: Here's your new sword, Krosh! Now you can go everywhere."
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Me: My name is Krish! Thanks anyway!"
+        - type: paragraph
+          children:
+            - bold: true
+              text: Is there a pilot on this island by any chance? He could fly me home.
+  - cellType: SQL
+    cellId: 0195d4a7-8725-7442-9790-77d06488dd51 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT *
+        FROM INHABITANT
+        WHERE job = 'pilot'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_20
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a7-ad09-7442-9791-07050fb8abd8 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Oh no, his state is 'kidnapped'.
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Paul:"
+            - text: " "
+            - bold: true
+              text: Horrible, the pilot is held captive by Dirty Dieter! I will show you a trick how to find out the name of the village where Dirty Dieter lives.
+        - type: paragraph
+          children:
+            - bold: true
+              text: The expression presented here is called a join. It combines the information of the inhabitant table with information of the village table by matching villageid values.
+  - cellType: SQL
+    cellId: 0195d4a7-e0b3-7442-9792-0ac4f1f2f694 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT village.name 
+        FROM 
+            village, 
+            inhabitant 
+        WHERE 
+            village.villageid = inhabitant.villageid 
+            AND
+            inhabitant.name = 'Dirty Dieter'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_21
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a8-ba46-7442-9793-dbee9c5e9a71 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Thanks for the hint! I can use the join to find out the chief's name of the village Onionville. (Hint: In the column 'chief' in the village table, the personid of the chief is stored)"
+  - cellType: SQL
+    cellId: 0195d4a8-87f0-7442-9793-7d887bdc976c # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |
+        SELECT INHABITANT.name
+        FROM VILLAGE, INHABITANT
+        WHERE 
+            VILLAGE.villageid = INHABITANT.villageid
+            AND
+            VILLAGE.name = 'Onionville'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_22
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a8-f811-7442-9794-fa97a62d212b # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: I've got it! I will visit Fred and ask him about Dirty Dieter and the pilot.
+        - type: paragraph
+          children:
+            - bold: true
+              text: Um, how many inhabitants does Onionville have?
+  - cellType: SQL
+    cellId: 0195d4a9-2377-7442-9795-dd15c15acb08 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT COUNT(*) 
+        FROM 
+            inhabitant, 
+            village 
+        WHERE 
+            village.villageid = inhabitant.villageid
+            AND 
+            village.name = 'Onionville'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_23
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4a9-c7f3-7442-9797-a0c42cfd2eb2 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Fred:"
+            - text: " "
+            - bold: true
+              text: "Hello Krish, the pilot is held captive by Dirty Dieter in his sister's house. Shall I tell you how many women there are in Onionville? Nah, you can figure it out by yourself! (Hint: Women show up as gender = 'f')"
+  - cellType: SQL
+    cellId: 0195d4aa-11e3-7442-9798-84fa773cd395 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT COUNT(*)
+        FROM VILLAGE, INHABITANT
+        WHERE 
+            VILLAGE.villageid = INHABITANT.villageid
+            AND
+            VILLAGE.name = 'Onionville'
+            AND 
+            INHABITANT.gender = 'f'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_24
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4aa-29c2-7442-9799-2df355d69706 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Oh, only one woman. What's her name?
+  - cellType: SQL
+    cellId: 0195d4aa-625b-7442-979a-36cf0e9e83d6 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT INHABITANT.name
+        FROM VILLAGE, INHABITANT
+        WHERE 
+            VILLAGE.villageid = INHABITANT.villageid
+            AND
+            VILLAGE.name = 'Onionville'
+            AND 
+            INHABITANT.gender = 'f'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_25
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4aa-922d-7442-979a-df9e54ce0795 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Let’s go!
+        - type: paragraph
+          children:
+            - bold: true
+              text: Krish, if you hand me over the entire property of our nearby village Cucumbertown, I will release the pilot. I will show you now what this property consists of.
+  - cellType: SQL
+    cellId: 0195d4aa-a2e8-7442-979b-e26a0ed39ecd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT SUM(inhabitant.gold) 
+        FROM
+            inhabitant,
+            village 
+        WHERE 
+            village.villageid = inhabitant.villageid 
+            AND 
+            village.name = 'Cucumbertown'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_26
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ab-576a-7442-979d-8adce5607abd # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Oh no, baking bread alone can't solve my problems. If I continue working and selling items though, I could earn more gold than the worth of gold inventories of all bakers, dealers and merchants together. How much gold is that?
+  - cellType: SQL
+    cellId: 0195d4ab-766e-7442-979e-6808cd7da5d0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT SUM(Inhabitant.gold)
+        FROM 
+            INHABITANT, 
+            VILLAGE
+        WHERE
+            Village.name = "Cucumbertown" 
+            AND 
+            (Inhabitant.job = "merchant" or Inhabitant.job = "baker" or Inhabitant.job = "dealer")
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_27
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ac-0944-7442-979f-b3efe6cbebcf # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: That's not enough.
+        - type: paragraph
+          children:
+            - bold: true
+              text: Let's have a look at how much average gold people own, depending on their job.
+  - cellType: SQL
+    cellId: 0195d4ac-266d-7442-97a0-95d083e6e6f0 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT 
+            job, 
+            SUM(inhabitant.gold), 
+            AVG(inhabitant.gold)
+        FROM inhabitant 
+        GROUP BY job 
+        ORDER BY AVG(inhabitant.gold)
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_28
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ac-abb4-7442-97a1-b6a86c21abd7 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Very interesting: For some reason, butchers own the most gold. How much gold do different inhabitants have on average, depending on their state (friendly, ...)?"
+  - cellType: SQL
+    cellId: 0195d4ac-d358-7442-97a3-0e3fd84d71b3 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        SELECT 
+            state,
+            AVG(gold)
+        FROM INHABITANT
+        GROUP BY state
+        ORDER BY gold DESC
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_29
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ad-2b1c-7442-97a4-03799243af73 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Ok, so the only way is to mug the villains.
+        - type: paragraph
+          children:
+            - bold: true
+              text: Or I might as well go ahead and just kill Dirty Dieter with my sword!
+  - cellType: SQL
+    cellId: 0195d4ad-923e-7442-97a5-5affdee64d12 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        DELETE FROM inhabitant
+        WHERE name = 'Dirty Dieter'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_30
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ad-c42b-7442-97a6-266ed2ca1e43 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: "Dirty Diane: Heeeey! Now I'm very angry! What will you do next, Krish?"
+  - cellType: SQL
+    cellId: 0195d4ae-0e0c-7442-97ae-65832f592195 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        DELETE FROM INHABITANT 
+        WHERE name = 'Dirty Diane'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_31
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ae-3e5e-7442-97af-07ec715cfd15 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Yeah! Now I release the pilot!
+  - cellType: SQL
+    cellId: 0195d4ae-5165-7442-97af-e254022aaa38 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE INHABITANT
+        SET state = "friendly"
+        WHERE job = "pilot"
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_32
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+  - cellType: TEXT
+    cellId: 0195d4ae-a68a-7442-97b0-eda9104b7ff2 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      richText:
+        - type: paragraph
+          children:
+            - bold: true
+              text: Thanks for releasing me, Krish! I will fly you home!
+        - type: paragraph
+          children:
+            - bold: true
+              text: I take my sword, some gold and lots of useless items with me as a souvenir. What a big adventure!
+        - type: paragraph
+          children:
+            - bold: true
+              text: The game is over. Get your certificate of completion now! If you want to change the name on the certificate, use an UPDATE command on the inhabitants table.
+  - cellType: SQL
+    cellId: 0195d4ae-72df-7442-97b0-801a3fa7c184 # DO NOT CHANGE - Hex uses this to match up cells when reimporting the file, and detect any changes to existing cells
+    cellLabel: null
+    config:
+      source: |-
+        UPDATE INHABITANT
+        SET name = 'your_name'
+        WHERE name = 'Krish'
+      dataFrameCell: false
+      dataConnectionId: c2217cbb-a687-47e3-b9a7-a3479abe4347
+      resultVariableName: dataframe_33
+      useRichDisplay: true
+      sqlCellOutputType: PANDAS
+      useQueryMode: false
+      castDecimals: true
+      useNativeDates: true
+      outputFilteredResult: true
+      allowDuplicateColumns: false
+      tableDisplayConfig:
+        pageSize: 50
+        height: null
+        hideIcons: false
+        defaultColumnWidth: null
+        hideIndex: false
+        defaultSortColumn: null
+        defaultSortIndexColumn: null
+        defaultSortDirection: ASC
+        conditionalFormatting: null
+        calcs: null
+        filters: null
+        columnProperties: []
+        columnOrdering: null
+        customColumnOrdering: null
+        pinnedColumns: null
+        hiddenColumns: null
+        pinIndexColumns: false
+        showAggregations: false
+        columnAggregations: null
+appLayout:
+  visibleMetadataFields:
+    - NAME
+    - DESCRIPTION
+    - AUTHOR
+    - LAST_EDITED
+    - LAST_RUN
+    - CATEGORIES
+    - STATUS
+    - TABLE_OF_CONTENTS
+  fullWidth: false
+  tabs:
+    - name: Tab 1
+      rows: []
+sharedFilters: []
